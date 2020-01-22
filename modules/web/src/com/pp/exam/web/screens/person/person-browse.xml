@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/window.xsd"
+        caption="msg://browseCaption"
+        class="com.pp.exam.web.screens.person.PersonBrowse"
+        focusComponent="personsTable"
+        lookupComponent="personsTable"
+        messagesPack="com.pp.exam.web.screens.person">
+    <dsContext>
+        <groupDatasource id="personsDs"
+                         class="com.pp.exam.entity.Person"
+                         view="_local">
+            <query>
+                <![CDATA[select e from exam$Person e]]>
+            </query>
+        </groupDatasource>
+    </dsContext>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="personsTable"
+            spacing="true">
+        <hbox spacing="true">
+            <vbox spacing="true">
+                <textField id="surnameTextField" caption="Surname"/>
+                <textField id="nameTextField" caption="Name"/>
+                <textField id="patronymicTextField" caption="Patronymic"/>
+                <dateField id="birthDateField" caption="Birth"/>
+                <textField id="documentIdTextField" caption="Document ID"/>
+                <textField id="phoneNumberTextField" caption="Phone number"/>
+            </vbox>
+            <vbox spacing="true">
+                <lookupField id="townLookupField" caption="Town"/>
+                <lookupField id="districtLookupField" caption="District"/>
+                <lookupField id="villageLookupField" caption="Village"/>
+                <hbox spacing="true" caption="Street" width="100%">
+                    <textField id="streetTextField" width="100%"/>
+                    <lookupField id="streetLookupField" width="100%"/>
+                </hbox>
+                <hbox spacing="true" width="100%">
+                    <textField id="houseTextField" caption="House" width="100%"/>
+                    <textField id="houseLetterTextField" caption="House letter" width="100%"/>
+                    <textField id="houseBuildingTextField" caption="House building" width="100%"/>
+                </hbox>
+                <hbox spacing="true" width="100%">
+                    <textField id="apartmentNumberTextField" caption="Apartment number" width="100%"/>
+                    <textField id="apartmentLetterTextField" caption="Apartment letter" width="100%"/>
+                </hbox>
+            </vbox>
+        </hbox>
+        <hbox spacing="true">
+            <button id="findButton" description="Find" caption="Find"/>
+            <button id="cancelButton" description="Cancel" caption="Cancel"/>
+        </hbox>
+        <groupTable id="personsTable"
+                    width="100%">
+            <actions>
+                <action id="create"
+                        openType="NEW_TAB"/>
+                <action id="edit"
+                        openType="NEW_TAB"/>
+                <action id="remove"/>
+            </actions>
+            <columns>
+                <column id="surname"/>
+                <column id="name"/>
+                <column id="patronymic"/>
+                <column id="yearBirth"/>
+                <column id="documentId"/>
+                <column id="phoneNumber"/>
+                <column id="town"/>
+                <column id="district"/>
+                <column id="village"/>
+                <column id="street"/>
+                <column id="house"/>
+                <column id="houseLetter"/>
+                <column id="houseBuilding"/>
+                <column id="apartmentNumber"/>
+                <column id="apartmentLetter"/>
+            </columns>
+            <rows datasource="personsDs"/>
+            <rowsCount/>
+        </groupTable>
+    </layout>
+</window>
